@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+            width: 8cm;
+            height: 16cm;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #333;
+            margin: 0;
+        }
+
+        #calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        input {
+            grid-column: span 4;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: calc(25% - 10px);
+            box-sizing: border-box;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calculator</h2>
+
+    <input type="text" id="calculatorInput" readonly>
+
+    <div id="calculator">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('+')">+</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('calculatorInput').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('calculatorInput').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                var result = eval(document.getElementById('calculatorInput').value);
+                alert('Result: ' + result);
+                document.getElementById('calculatorInput').value = result;
+            } catch (error) {
+                alert('Invalid expression');
+            }
+        }
+    </script>
+
+</body>
+</html>
